@@ -79,18 +79,3 @@ We welcome contributions to the Sports Assessment Project. To contribute, follow
    git push origin feature-branch
    ```
 5. Create a pull request.
-
-## Docker
-
-To run the Sports Assessment Project using Docker, follow these steps:
-
-1. Build the Docker image:
-   ```bash
-   docker build -t sports_assessment .
-   ```
-2. Run the Docker container: Use your postgres url
-   ```bash
-   docker run  -p 8000:8000 -e DATABASE_URL="postgres://postgres:password@localhost:5432/postgres" JWT_SECRET="abshgsjflslj23234" PORT=8000 sports_assessment
-   ```
-
-This will start the application in a Docker container and make it accessible at `http://localhost:8000`.

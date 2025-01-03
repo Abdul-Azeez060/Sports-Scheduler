@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "npm run prisma:generate && node src/index.js"
+    "start": "node src/index.js",
+    "db:generate": " npm prisma generate "
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
