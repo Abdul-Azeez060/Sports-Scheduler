@@ -39,4 +39,4 @@ jobs:
             sudo  docker pull  abdulazeez06/sports-app:latest
             sudo docker stop sport-app || true
             sudo docker rm sport-app || true
-            sudo docker run -d --name sport-app -p 8000:8000 -e JWT_SECRET="abshgsj32sdflslj23234" -e PORT=8000 -e DATABASE_URL="${{ secrets.DATABASE_URL}}"  abdulazeez06/sports-app:latest
+            sudo docker run -d --name sport-app -p 8000:8000 -e JWT_SECRET="${{ secrets.JWT_SECRET }}" -e PORT=8000 -e DATABASE_URL="${{ secrets.DATABASE_URL}}"  abdulazeez06/sports-app:latest
