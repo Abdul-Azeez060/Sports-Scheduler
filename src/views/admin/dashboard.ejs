@@ -1,47 +1,56 @@
 <%- include('../partials/header', { user }) %>
 
 <div class="container mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold">Admin Dashboard</h1>
-        <a href="/admin/sports/new" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Create New Sport
-        </a>
-    </div>
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Admin Dashboard</h1>
+    <a
+      href="/admin/sports/new"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Create New Sport
+    </a>
+  </div>
 
-    <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-xl font-bold mb-4">Your Sports</h2>
-        <% if (sports.length === 0) { %>
-            <p class="text-gray-600">No sports created yet.</p>
-        <% } else { %>
-            <div class="grid gap-4">
-                <% sports.forEach(sport => { %>
-                    <div class="border rounded p-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-lg font-semibold"><%= sport.title %></h3>
-                                <p class="text-gray-600"><%= sport.description %></p>
-                                <div class="mt-2">
-                                    <p>Location: <%= sport.location %></p>
-                                    <p>Date: <%= new Date(sport.matchDate).toLocaleDateString() %></p>
-                                    <p>Available Spots: <%= sport.availableSpots %>/<%= sport.totalSpots %></p>
-                                </div>
-                            </div>
-                        </div>
-                        <% if (sport.players.length > 0) { %>
-                            <div class="mt-4">
-                                <h4 class="font-semibold">Registered Players:</h4>
-                                <ul class="list-disc list-inside">
-                                    <% sport.players.forEach(ps => { %>
-                                        <li><%= ps.player.username %> - Joined: <%= new Date(ps.joinedAt).toLocaleDateString() %></li>
-                                    <% }) %>
-                                </ul>
-                            </div>
-                        <% } %>
-                    </div>
-                <% }) %>
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-bold mb-4">Your Sports</h2>
+    <% if (sports.length === 0) { %>
+    <p class="text-gray-600">No sports created yet.</p>
+    <% } else { %>
+    <div class="grid gap-4">
+      <% sports.forEach(sport => { %>
+      <div class="border rounded p-4">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="text-lg font-semibold"><%= sport.title %></h3>
+            <p class="text-gray-600"><%= sport.description %></p>
+            <div class="mt-2">
+              <p>Location: <%= sport.location %></p>
+              <p>Date: <%= new Date(sport.matchDate).toLocaleDateString() %></p>
+              <p>
+                Available Spots: <%= sport.availableSpots %>/<%=
+                sport.totalSpots %>
+              </p>
             </div>
+          </div>
+        </div>
+        <% if (sport.players.length > 0) { %>
+
+        <div class="mt-4">
+          <h4 class="font-semibold">Registered Players:</h4>
+          <ul class="list-disc list-inside">
+            <% sport.players.forEach(ps => { %>
+            <li>
+              <%= ps.player.username %> - Joined: <%= new
+              Date(ps.joinedAt).toLocaleDateString() %>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
         <% } %>
+      </div>
+      <% }) %>
     </div>
+    <% } %>
+  </div>
 </div>
 
 <%- include('../partials/footer') %>
