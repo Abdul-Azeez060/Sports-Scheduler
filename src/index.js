@@ -7,6 +7,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
 const playerRoutes = require("./routes/player");
+const { alreadyLoggedIn } = require("./middleware/auth");
 
 const app = express();
 const prisma = new PrismaClient();
@@ -23,7 +24,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Routes
-app.get("/", (req, res) => {
+app.get("/", alreadyLoggedIn, (req, res) => {
   res.render("index");
 });
 

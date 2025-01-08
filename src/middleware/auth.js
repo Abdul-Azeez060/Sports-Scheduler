@@ -21,13 +21,25 @@ const authenticateToken = async (req, res, next) => {
   }
 };
 
-const alreadyLoggedIn = (req, res, next) => {
+const alreadyLoggedIn = async (req, res, next) => {
   console.log("this is inside already logged in");
-  if (req.cookies.token) {
-    console.log("this is insidde already logged in");
-    return res.send("You are already logged in");
+  const token = req.cookies.token;
+
+  if (!token) {
+    return next();
   }
-  next();
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await prisma.user.findUnique({ where: { id: decoded.userId } });
+
+    res.redirect(
+      req.user.role == "ADMIN" ? "/admin/dashboard" : "/player/dashboard"
+    );
+  } catch (error) {
+    res.clearCookie("token");
+    next();
+  }
 };
 
 module.exports = { authenticateToken, alreadyLoggedIn };
