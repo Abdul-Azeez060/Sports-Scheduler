@@ -9,6 +9,8 @@ const adminRoutes = require("./routes/admin");
 const playerRoutes = require("./routes/player");
 const { alreadyLoggedIn } = require("./middleware/auth");
 
+const app = express();
+
 const PORT = process.env.PORT || 3000;
 
 // Middleware
