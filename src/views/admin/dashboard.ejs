@@ -1,6 +1,6 @@
 <%- include('../partials/header', { user }) %>
 
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8 min-h-screen">
   <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold">Admin Dashboard</h1>
     <a
@@ -28,6 +28,13 @@
               <p>
                 Available Spots: <%= sport.availableSpots %>/<%=
                 sport.totalSpots %>
+              </p>
+              <p class="my-2">
+                <a
+                  href="/admin/sports/<%= sport.id %>"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Edit
+                </a>
               </p>
             </div>
           </div>
