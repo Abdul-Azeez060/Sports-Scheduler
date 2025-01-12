@@ -21,7 +21,6 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Routes
 app.get("/", alreadyLoggedIn, (req, res) => {
   res.render("index");
 });
