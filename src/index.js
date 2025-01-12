@@ -9,9 +9,6 @@ const adminRoutes = require("./routes/admin");
 const playerRoutes = require("./routes/player");
 const { alreadyLoggedIn } = require("./middleware/auth");
 
-const app = express();
-const prisma = new PrismaClient();
-
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -19,7 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// View engine setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 

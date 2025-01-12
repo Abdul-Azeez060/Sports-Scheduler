@@ -1,12 +1,7 @@
 const { z } = require("zod");
 
 const LoginSchema = z.object({
-  username: z
-    .string()
-    .regex(
-      new RegExp(/^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/),
-      "username should contain only alphabets"
-    ),
+  username: z.string(),
   password: z.string().min(6),
 });
 
